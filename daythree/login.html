@@ -1,26 +1,49 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-    <title>Memoi Africa bootcamp day 2</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memoi Academy Registration</title>
 </head>
-
-<body>
-    <center>
-        <div>
-            <img src="logo.jpg" width="50px" height="50px" style="border:10px 10px 10px 10px">
-            <form >
-                <h2 style="font-size:30px; font-family:tahoma; color:black; background-color:aquamarine">Registration
-                    page</h2>
-                <label>Username</label><br>
-                <input type="text" name="username" placeholder="Enter your username" style="width: 200px; height: 35px;
-        border-radius:15px 15px 15px 15px;"><br><br>
-                <label>Password</label><br>
-                <input type="password" name="password" placeholder="Enter your password" style="width: 200px; height: 35px;
-        border-radius:15px 15px 15px 15px;"><br><br>
-                <input type="submit" value="Please click here to submit your details"><br> <br>
-            </form>
-        </div>
-    </center>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f0f0f0;">
+  <div style="max-width: 500px; margin: 50px auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+    <h2 style="text-align: center;">Memoi Academy Registration Form</h2>
+    <form action="#" method="POST">
+      <div style="margin-bottom: 20px;">
+        <label for="full-name" style="display: block; font-weight: bold;">Full Name:</label>
+        <input type="text" id="full-name" name="full-name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required>
+      </div>
+      <div style="margin-bottom: 20px;">
+        <label for="username" style="display: block; font-weight: bold;">Username:</label>
+        <input type="text" id="username" name="username" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required>
+      </div>
+      <div style="margin-bottom: 20px;">
+        <label for="email" style="display: block; font-weight: bold;">Email:</label>
+        <input type="email" id="email" name="email" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required>
+      </div>
+      <div style="margin-bottom: 20px;">
+        <label for="password" style="display: block; font-weight: bold;">Password:</label>
+        <input type="password" id="password" name="password" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required>
+      </div>
+      <div style="margin-bottom: 20px;">
+        <label for="gender" style="display: block; font-weight: bold;">Gender:</label>
+        <select id="gender" name="gender" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required>
+          <option value="">Select</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div style="margin-bottom: 20px;">
+        <label for="age" style="display: block; font-weight: bold;">Age:</label>
+        <input type="number" id="age" name="age" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required>
+      </div>
+      <div style="margin-bottom: 20px;">
+        <label for="dob" style="display: block; font-weight: bold;">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;" required>
+      </div>
+      <button type="submit" style="width: 100%; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Register</button>
+    </form>
+  </div>
 </body>
-
 </html>
