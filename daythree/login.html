@@ -40,11 +40,30 @@
         submitButton.disabled = false;
       }
     }
-//alert
-//prompt
-//confirm
-//in form submit
-//assignment:how do one handle javascript prompt func maybe take it to the database, or redirect,  
+
+    // Function to handle form submission with JavaScript prompt
+    document.getElementById('registration-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      
+      // Show confirmation dialog
+      var isConfirmed = confirm('Are you sure you want to submit this form?');
+
+      // If user confirms, proceed with submission
+      if (isConfirmed) {
+        var promptData = prompt('Please provide additional information:', 'Additional information');
+        if (promptData !== null) {
+          alert('Thank you for your submission! Additional information provided: ' + promptData);
+          // Here you can redirect the user to another page if needed
+          // window.location.href = 'your_page.html';
+        } else {
+          alert('Submission canceled.');
+        }
+      } else {
+        alert('Submission canceled.');
+      }
+    });
+
+    // Event listener to check password match on input
     document.getElementById('confirm-password').addEventListener('input', checkPasswordsMatch);
   </script>
 </body>
