@@ -22,6 +22,8 @@
       <!-- Other input fields -->
       <button type="submit" id="submit-button" style="width: 100%; padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Register</button>
     </form>
+    <!-- Container for additional information -->
+    <div id="additional-info-container" style="margin-top: 20px;"></div>
   </div>
 
   <script>
@@ -34,14 +36,17 @@
       if (password !== confirmPassword) {
         errorMessage.textContent = 'Passwords do not match';
         errorMessage.style.display = 'block';
-        submitButton.disabled = true;
+        submitButton.disabled = true; // Disable submit button if passwords do not match
       } else {
         errorMessage.style.display = 'none';
-        submitButton.disabled = false;
+        submitButton.disabled = false; // Enable submit button if passwords match
       }
     }
 
-    // Function to handle form submission with JavaScript prompt
+    // Event listener to check password match on input
+    document.getElementById('confirm-password').addEventListener('input', checkPasswordsMatch);
+
+    // Function to handle form submission with JavaScript prompt and save input to local storage
     document.getElementById('registration-form').addEventListener('submit', function(event) {
       event.preventDefault(); // Prevent default form submission
       
@@ -50,21 +55,52 @@
 
       // If user confirms, proceed with submission
       if (isConfirmed) {
-        var promptData = prompt('Please provide additional information:', 'Additional information');
+        // Prompt user for additional information
+        var promptData = prompt('Please provide additional information:', 'Additional information'); 
+
+        // Check if promptData is not null (i.e., user provided input)
         if (promptData !== null) {
-          alert('Thank you for your submission! Additional information provided: ' + promptData);
-          // Here you can redirect the user to another page if needed
-          // window.location.href = 'your_page.html';
+          // Option 1: Alert with additional information provided
+          alert('Thank you for your submission! Additional information provided: ' + promptData); 
+          
+          // Option 2: Save additional information to local storage
+          localStorage.setItem('additionalInformation', promptData);
+          
+          // Option 3: Log additional information to console
+          console.log('Additional information provided:', promptData);
+
+          // Option 4: Display additional information on the webpage
+          var additionalInfoElement = document.createElement('p');
+          additionalInfoElement.textContent = 'Additional information: ' + promptData;
+          document.getElementById('additional-info-container').appendChild(additionalInfoElement);
+
+          // Option 5: Send additional information to server using AJAX
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', 'your_server_endpoint', true);
+          xhr.setRequestHeader('Content-Type', 'application/json');
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+              if (xhr.status === 200) {
+                console.log('Additional information sent successfully:', xhr.responseText);
+              } else {
+                console.error('Error sending additional information:', xhr.status);
+              }
+            }
+          };
+          xhr.send(JSON.stringify({ additionalInfo: promptData }));
+
+          // Option 6: Use additional information to update elements on the webpage
+          var infoContainer = document.getElementById('additional-info-container');
+          infoContainer.textContent = 'Additional information: ' + promptData;
         } else {
+          // If user cancels prompt, show submission canceled alert
           alert('Submission canceled.');
         }
       } else {
+        // If user cancels form submission, show submission canceled alert
         alert('Submission canceled.');
       }
     });
-
-    // Event listener to check password match on input
-    document.getElementById('confirm-password').addEventListener('input', checkPasswordsMatch);
   </script>
 </body>
 </html>
